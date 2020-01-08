@@ -7,6 +7,7 @@ import (
 	"github.com/utsavgupta/wireapp/ent"
 )
 
+type MovieBuffer int
 type Movie interface {
 	LoadItems() []ent.Movie
 	SaveItem(*ent.Movie) error
@@ -17,7 +18,7 @@ type movie struct {
 	items []ent.Movie
 }
 
-func NewMovie(size int) Movie {
+func NewMovie(size MovieBuffer) Movie {
 	i := make([]ent.Movie, 0, size)
 	l := &sync.Mutex{}
 

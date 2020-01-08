@@ -7,6 +7,8 @@ import (
 	"github.com/utsavgupta/wireapp/ent"
 )
 
+type AlbumBuffer int
+
 type Album interface {
 	LoadItems() []ent.Album
 	SaveItem(*ent.Album) error
@@ -17,7 +19,7 @@ type album struct {
 	items []ent.Album
 }
 
-func NewAlbum(size int) Album {
+func NewAlbum(size AlbumBuffer) Album {
 	i := make([]ent.Album, 0, size)
 	l := &sync.Mutex{}
 
